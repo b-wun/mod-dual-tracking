@@ -12,7 +12,7 @@
 
 ## Description
 
-`mod-dual-tracking` is an AzerothCore module written in C++ that enables concurrent node tracking for dual-profession gatherers. It alters server-side tracking behavior in-memory, allowing players with both Mining and Herbalism to display both resource node types on the minimap radar simultaneously.
+`mod-dual-tracking` is an AzerothCore module that enables concurrent node tracking for dual-profession gatherers. It alters server-side tracking behavior in-memory, allowing players with both Mining and Herbalism to display both resource node types on the minimap radar simultaneously.
 
 ---
 
