@@ -5,6 +5,7 @@
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Configuration](#configuration)
 - [Credits](#credits)
 - [License](#license)
 
@@ -49,6 +50,18 @@
 
 * **Single Profession:** Casting **Find Herbs** or **Find Minerals** functions as normal, displaying only that specific node type.
 * **Dual Profession:** When a character holding both Mining and Herbalism skills activates either **Find Herbs** or **Find Minerals**, the server automatically enables both tracking bitmasks, displaying both herb and ore locations on the minimap radar.
+
+---
+
+## Configuration
+
+The module is configured through `configs/modules/mod_dual_tracking.conf` (copied from `conf/mod_dual_tracking.conf.dist` on build).
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `DualTracking.Enable` | Enables or disables the module. `1` = enabled, `0` = disabled. | `1` |
+
+Changing this option requires a worldserver restart, as the spell modifications are applied once at startup.
 
 ---
 

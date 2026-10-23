@@ -1,3 +1,5 @@
+#include "Config.h"
+#include "Log.h"
 #include "ScriptMgr.h"
 #include "SpellMgr.h"
 #include "SpellInfo.h"
@@ -11,6 +13,11 @@ enum TrackSpells : uint32
     SPELL_FIND_MINERALS = 2580
 };
 
+namespace
+{
+    bool moduleEnabled = false;
+}
+
 // World script to modify spell definitions on boot
 class mod_dual_tracking_world : public WorldScript
 {
@@ -19,6 +26,14 @@ public:
 
     void OnStartup() override
     {
+        moduleEnabled = sConfigMgr->GetOption<bool>("DualTracking.Enable", true);
+
+        if (!moduleEnabled)
+        {
+            LOG_INFO("module", "mod-dual-tracking: disabled by config, skipping spell modification.");
+            return;
+        }
+
         // Mutate "Find Herbs" (2383) to include Mineral tracking as Effect 1
         if (SpellInfo* herbSpell = const_cast<SpellInfo*>(sSpellMgr->GetSpellInfo(SPELL_FIND_HERBS)))
         {
@@ -47,7 +62,7 @@ public:
 
     void OnAuraApply(Unit* unit, Aura* aura) override
     {
-        if (!unit || !unit->IsPlayer() || !aura)
+        if (!unit || !unit->IsPlayer() || !aura || !moduleEnabled)
             return;
 
         Player* player = unit->ToPlayer();

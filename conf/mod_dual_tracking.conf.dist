@@ -1,0 +1,13 @@
+[worldserver]
+
+###################################################################################################
+# Dual Tracking Module
+###################################################################################################
+
+# Enable or disable the dual tracking module.
+# 1 - Enabled
+# 0 - Disabled
+#
+# Default: 1
+
+DualTracking.Enable = 1
